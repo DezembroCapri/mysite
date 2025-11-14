@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-searchresults{% endblock %}
+
+{% block content %}
+
+<!-- Hero section -->
+<section class="hero center">
+    <div class="hero-content">
+        <h1 class="hero-title">Search Results</h1>
+
+        {% if search_query %}
+        <p class="hero-intro">You searched for: <strong>{{ search_query }}</strong></p>
+        {% else %}
+        <p class="hero-intro">Type something in the search bar to find posts.</p>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Results section -->
+<section class="blog-posts center">
+    {% if search_query %}
+    {% if search_results %}
+    <div class="card-container">
+        {% for post in search_results %}
+        {% with post=post.specific %}
+        <div class="card">
+            <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
+
+            {% with post.main_image as main_image %}
+            {% if main_image %}
+            {% image main_image fill-400x250 class="post-image" %}
+            {% endif %}
+            {% endwith %}
+
+            <p>{{ post.intro }}</p>
+            {{ post.body|richtext }}
+        </div>
+        {% endwith %}
+        {% endfor %}
+    </div>
+
+    <!-- Pagination -->
+    {% if search_results.has_other_pages %}
+    <div class="pagination">
+        {% if search_results.has_previous %}
+        <a href="?query={{ search_query }}&page={{ search_results.previous_page_number }}">← Previous</a>
+        {% endif %}
+
+        <span>Page {{ search_results.number }} of {{ search_results.paginator.num_pages }}</span>
+
+        {% if search_results.has_next %}
+        <a href="?query={{ search_query }}&page={{ search_results.next_page_number }}">Next →</a>
+        {% endif %}
+    </div>
+    {% endif %}
+
+    {% else %}
+    <p>No results found for <strong>{{ search_query }}</strong>.</p>
+    {% endif %}
+    {% endif %}
+</section>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+<h1>Posts tagged with “{{ tag }}”</h1>
+
+<div class="card-container">
+    {% for post in blogpages %}
+    <div class="card">
+        <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
+        <p>{{ post.intro }}</p>
+    </div>
+    {% empty %}
+    <p>No posts found with this tag.</p>
+    {% endfor %}
+</div>
+{% endblock %}

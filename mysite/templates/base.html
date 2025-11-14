@@ -1,0 +1,83 @@
+{% load static wagtailcore_tags wagtailuserbar %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>
+        {% block title %}
+        {% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}
+        {% endblock %}
+        {% block title_suffix %}
+        {% wagtail_site as current_site %}
+        {% if current_site and current_site.site_name %}- {{ current_site.site_name }}{% endif %}
+        {% endblock %}
+    </title>
+
+    {% if page.search_description %}
+    <meta name="description" content="{{ page.search_description }}">
+    {% endif %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% if request.in_preview_panel %}
+    <base target="_blank">
+    {% endif %}
+
+    <!-- ===== Global Stylesheets ===== -->
+    <link rel="stylesheet" href="{% static 'css/mysite.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body class="{% block body_class %}{% endblock %}">
+    {% wagtailuserbar %}
+
+    <!-- ===== NAVBAR ===== -->
+    <header class="navbar ">
+        <div class="center ">
+
+
+            <nav class="nav-container">
+                <a href="/" class="logo">Licos Tech</a>
+                <ul class="nav-links">
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="{% slugurl 'about' %}">About</a></li>
+                    <li><a href="{% slugurl 'contact' %}">Contact</a></li>
+                </ul>
+
+            </nav>
+
+        </div>
+    </header>
+
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main>
+
+
+        {% block content %}{% endblock %}
+        <div class="center">
+
+            <form action="{% url 'search' %}" method="get" class="search-form">
+                <input type="text" name="query" placeholder="Pesquisa..." value="{{ search_query|default:'' }}">
+                <button type="submit">Pesquisa</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <p>© {% now "Y" %} Licos Tech. Todos os direitos reservadors.</p>
+        <div class="social-icons">
+            <a href="#"><img src="{% static 'icons/facebook.svg' %}" alt="Facebook"></a>
+            <a href="#"><img src="{% static 'icons/twitter.svg' %}" alt="Twitter"></a>
+            <a href="#"><img src="{% static 'icons/github.svg' %}" alt="GitHub"></a>
+        </div>
+    </footer>
+
+    <!-- ===== GLOBAL JS ===== -->
+    <script src="{% static 'js/mysite.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+
+</html>
