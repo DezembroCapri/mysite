@@ -1,5 +1,5 @@
 from .base import *
-import os
+import os, dj_database_url
 from pathlib import Path
 
 # -------------------------------------------------------------------
@@ -38,14 +38,11 @@ STORAGES["staticfiles"]["BACKEND"] = (
 # -------------------------------------------------------------------
 
 DATABASES = {
-    "default": {
-        "ENGINE": os.environ.get("DB_ENGINE", "django.db.backends.postgresql"),
-        "NAME": os.environ.get("DB_NAME", "mysite_db"),
-        "USER": os.environ.get("DB_USER", "mysite_user"),
-        "PASSWORD": os.environ.get("DB_PASSWORD", "changeme"),
-        "HOST": os.environ.get("DB_HOST", "localhost"),
-        "PORT": os.environ.get("DB_PORT", "5432"),
-    }
+    "default": dj_database_url.config(
+        default=os.environ.get("DATABASE_URL"),
+        conn_max_age=600,
+        ssl_require=True,
+    )
 }
 
 # -------------------------------------------------------------------
