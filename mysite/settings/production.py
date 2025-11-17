@@ -32,6 +32,7 @@ MEDIA_ROOT = BASE_DIR / "media"
 STORAGES["staticfiles"]["BACKEND"] = (
     "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
 )
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # -------------------------------------------------------------------
 # 🗄️ DATABASE (PostgreSQL RECOMMENDED)
