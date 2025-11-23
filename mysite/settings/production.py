@@ -21,7 +21,7 @@ ALLOWED_HOSTS = os.environ.get(
 # 📦 STATIC & MEDIA
 # -------------------------------------------------------------------
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 STATIC_URL = "/static/"
 MEDIA_URL = "/media/"
