@@ -23,8 +23,11 @@ ALLOWED_HOSTS = os.environ.get(
 
 
 
-STATIC_URL = "/static/"
-MEDIA_URL = "/media/"
+# DO NOT define BASE_DIR here — use the one from base.py
+
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 MEDIA_ROOT = BASE_DIR / "media"
