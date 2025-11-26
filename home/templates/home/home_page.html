@@ -1,15 +1,36 @@
 {% extends "base.html" %}
-{% load static wagtailcore_tags %}
+{% load wagtailcore_tags %}
 
 {% block body_class %}template-homepage{% endblock %}
 
-
-
-
 {% block content %}
+
 <section class="page-content center">
     <div class="content-wrapper">
         {{ page.body|richtext }}
     </div>
 </section>
+
+<section class="blog-posts center">
+    <h2>Últimos Artigos</h2>
+
+    <div class="card-container">
+        {% for post in latest_posts %}
+        {% with post=post.specific %}
+        <div class="card">
+            <h3><a href="{% pageurl post %}">{{ post.title }}</a></h3>
+
+            {% if post.main_image %}
+            {% image post.main_image fill-400x250 class="post-image" %}
+            {% endif %}
+
+            <p>{{ post.intro }}</p>
+        </div>
+        {% endwith %}
+        {% empty %}
+        <p>Sem artigos ainda.</p>
+        {% endfor %}
+    </div>
+</section>
+
 {% endblock %}
