@@ -25,11 +25,8 @@
     {% endif %}
 
     <!-- ===== Global Stylesheets ===== -->
-
-    {% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/mysite.css' %}">
-    <link rel="stylesheet" href="{% static 'blog/blog.css' %}">
-
+    {% block extra_css %}
     {% endblock %}
 </head>
 
