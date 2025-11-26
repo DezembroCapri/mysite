@@ -25,17 +25,16 @@ ALLOWED_HOSTS = os.environ.get(
 
 # DO NOT define BASE_DIR here — use the one from base.py
 
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-
-
+# STATIC & MEDIA
 STATIC_ROOT = BASE_DIR / "staticfiles"
 MEDIA_ROOT = BASE_DIR / "media"
 
 STORAGES["staticfiles"]["BACKEND"] = (
     "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
 )
+
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 
 # -------------------------------------------------------------------
 # 🗄️ DATABASE (PostgreSQL RECOMMENDED)
