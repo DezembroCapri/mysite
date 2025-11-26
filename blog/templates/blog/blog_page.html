@@ -8,11 +8,6 @@
 {% block content %}
 <article class="blog-post">
 
-    <header class="post-header">
-        <h1 class="post-title">{{ page.title }}</h1>
-        <p class="post-meta">Published on {{ page.date }}</p>
-    </header>
-
     {% if page.gallery_images.all %}
     <div class="post-gallery">
         {% for item in page.gallery_images.all %}
@@ -25,6 +20,13 @@
         {% endfor %}
     </div>
     {% endif %}
+
+    <header class="post-header">
+        <h1 class="post-title">{{ page.title }}</h1>
+        <p class="post-meta">Published on {{ page.date }}</p>
+    </header>
+
+
 
     {% if page.intro %}
     <div class="post-intro">

@@ -122,24 +122,27 @@ body {
 .card-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    grid-template-rows: auto auto auto auto;
     justify-content: center;
-    gap: 15px;
-    /*border: 5px solid green;*/
+    gap: 25px;
+    text-align: center;
+
 }
 
 
 .card {
     background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    /*border: 1px solid black;*/
     overflow: hidden;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-align: center;
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: 1/5;
+
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
-}
+
 
 .card a {
     color: inherit;
@@ -149,9 +152,10 @@ body {
 }
 
 .card-image img {
-    width: 100%;
+    max-width: 100%;
     height: auto;
     display: block;
+    margin: 0 auto;
 }
 
 .card-content {
@@ -180,7 +184,7 @@ body {
 
 /* --- Single Blog Post Styles --- */
 .blog-post {
-    max-width: 800px;
+    max-width: 70%;
     margin: 60px auto;
     padding: 20px;
     background-color: #fff;

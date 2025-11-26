@@ -54,16 +54,17 @@
 
     <!-- ===== MAIN CONTENT ===== -->
     <main>
-
-
-        {% block content %}{% endblock %}
-        <div class="center">
+        <div class=" search-form center">
 
             <form action="{% url 'search' %}" method="get" class="search-form">
                 <input type="text" name="query" placeholder="Pesquisa..." value="{{ search_query|default:'' }}">
                 <button type="submit">Pesquisa</button>
             </form>
         </div>
+
+
+        {% block content %}{% endblock %}
+
     </main>
 
     <!-- ===== FOOTER ===== -->
