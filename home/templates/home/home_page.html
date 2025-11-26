@@ -1,11 +1,14 @@
+{% load static %}
+
 {% extends "base.html" %}
 {% load static wagtailcore_tags %}
 
 {% block body_class %}template-homepage{% endblock %}
 
 {% block extra_css %}
-{# Leave empty or add your REAL CSS if you have one #}
+<link rel="stylesheet" href="{% static 'blog/blog.css' %}">
 {% endblock %}
+
 
 {% block content %}
 <section class="page-content center">
