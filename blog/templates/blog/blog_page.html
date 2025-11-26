@@ -1,10 +1,6 @@
 {% extends "base.html" %}
 {% load static wagtailcore_tags wagtailimages_tags %}
 
-{% block extra_css %}
-{{ block.super }}
-<link rel="stylesheet" href="{% static 'blog/blog.css' %}">
-{% endblock %}
 
 
 {% block body_class %}template-blogpage{% endblock %}
