@@ -25,8 +25,12 @@
     {% endif %}
 
     <!-- ===== Global Stylesheets ===== -->
+
+    {% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/mysite.css' %}">
-    {% block extra_css %}{% endblock %}
+    <link rel="stylesheet" href="{% static 'blog/blog.css' %}">
+
+    {% endblock %}
 </head>
 
 <body class="{% block body_class %}{% endblock %}">
@@ -41,8 +45,8 @@
                 <a href="/" class="logo">Licos Tech</a>
                 <ul class="nav-links">
                     <li><a href="/">Inicio</a></li>
-                    <li><a href="{% slugurl 'about' %}">About</a></li>
-                    <li><a href="{% slugurl 'contact' %}">Contact</a></li>
+                    <li><a href="{% slugurl 'about' %}">Sobre Mim</a></li>
+                    <li><a href="{% slugurl 'contact' %}">Contacto</a></li>
                 </ul>
 
             </nav>
@@ -67,7 +71,7 @@
 
     <!-- ===== FOOTER ===== -->
     <footer class="footer">
-        <p>© {% now "Y" %} Licos Tech. Todos os direitos reservadors.</p>
+        <p>© {% now "Y" %} Licos Tech. Todos os direitos reservados.</p>
     </footer>
 
     <!-- ===== GLOBAL JS ===== -->
