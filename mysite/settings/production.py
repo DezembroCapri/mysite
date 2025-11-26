@@ -17,6 +17,10 @@ ALLOWED_HOSTS = os.environ.get(
     "DJANGO_ALLOWED_HOSTS", "licostech.com,127.0.0.1,localhost"
 ).split(",")
 
+WAGTAILADMIN_BASE_URL = os.environ.get("WAGTAILADMIN_BASE_URL", "https://licostech.com")
+
+
+
 # -------------------------------------------------------------------
 # 📦 STATIC & MEDIA
 # -------------------------------------------------------------------
