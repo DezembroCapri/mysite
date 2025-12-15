@@ -40,12 +40,19 @@
 
             <nav class="nav-container">
                 <a href="/" class="logo">Licos Tech</a>
+                
                 <ul class="nav-links">
                     <li><a href="/">Inicio</a></li>
                     <li><a href="{% slugurl 'about' %}">Sobre Mim</a></li>
                     <li><a href="{% slugurl 'contact' %}">Contacto</a></li>
                 </ul>
 
+                <form action="{% url 'search' %}" method="get" class="nav-search">
+                    <input type="text" name="query" placeholder="Pesquisa..." value="{{ search_query|default:'' }}">
+                    <button type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    </button>
+                </form>
             </nav>
 
         </div>
@@ -54,13 +61,6 @@
 
     <!-- ===== MAIN CONTENT ===== -->
     <main>
-        <div class=" search-form center">
-
-            <form action="{% url 'search' %}" method="get" class="search-form">
-                <input type="text" name="query" placeholder="Pesquisa..." value="{{ search_query|default:'' }}">
-                <button type="submit">Pesquisa</button>
-            </form>
-        </div>
 
 
         {% block content %}{% endblock %}

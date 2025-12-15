@@ -15,19 +15,18 @@
         {% for post in blogpages %}
         {% with post=post.specific %}
         <div class="card">
-
-            <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
-
             {% with post.main_image as main_image %}
             {% if main_image %}
             <div class="card-image">
-                {% image main_image fill-400x250 class="post-image" %}
+                {% image main_image fill-400x250 %}
             </div>
             {% endif %}
             {% endwith %}
 
-            <p>{{ post.intro }}</p>
-
+            <div class="card-content">
+                <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
+                <p>{{ post.intro }}</p>
+            </div>
         </div>
         {% endwith %}
         {% endfor %}
